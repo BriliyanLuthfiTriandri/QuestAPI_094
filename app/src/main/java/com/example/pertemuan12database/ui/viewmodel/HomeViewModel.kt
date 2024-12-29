@@ -13,7 +13,11 @@ import kotlinx.coroutines.launch
 import okio.IOException
 
 
-
+sealed class HomeUiState {
+    data class Success(val mahasiswa: List<Mahasiswa>) : HomeUiState()
+    object Error : HomeUiState()
+    object Loading : HomeUiState()
+}
 
 class HomeViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
     var mhsUIState: HomeUiState by mutableStateOf(HomeUiState.Loading)
