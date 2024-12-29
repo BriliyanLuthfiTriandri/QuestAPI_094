@@ -45,6 +45,10 @@ import com.example.pertemuan12database.ui.viewmodel.HomeUiState
 import com.example.pertemuan12database.ui.viewmodel.HomeViewModel
 import com.example.pertemuan12database.ui.viewmodel.PenyediaViewModel
 
+object DestinasiHome : DestinasiNavigasi {
+    override val route = "home"
+    override val titleRes = "Home Mhs"
+}
 
 
 @OptIn(ExperimentalMaterial3Api::class)
