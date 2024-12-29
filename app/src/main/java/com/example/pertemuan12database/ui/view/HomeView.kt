@@ -48,6 +48,19 @@ import com.example.pertemuan12database.ui.viewmodel.PenyediaViewModel
 
 
 /**
+ * The home screen displaying the loading message.
+ */
+@Composable
+fun OnLoading(modifier: Modifier = Modifier) {
+    Image(
+        modifier = modifier.size(200.dp),
+        painter = painterResource(R.drawable.loading),
+        contentDescription = stringResource(R.string.loading)
+    )
+}
+
+
+/**
  * The home screen displaying error message with re-attempt button.
  */
 @Composable
