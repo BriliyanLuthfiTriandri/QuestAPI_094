@@ -21,3 +21,11 @@
 6. Tampilan Setelah Delete Data
 
 ![ss hasil delete data](https://github.com/user-attachments/assets/a6bc7fe9-438c-47f7-98cf-f418c7f6aa85)
+
+7. Tampilan Insert Data Mahasiswa
+
+![tampilan insert data mahasiswa](https://github.com/user-attachments/assets/8f6a2869-a4de-4193-8922-01ac13b6d662)
+
+8. Tampilan Home Setelah Insert Data Mahasiswa
+
+![tampilan home setelah insert mahasiswa](https://github.com/user-attachments/assets/21981826-05d2-4a60-92f0-3414607b6b7c)
