@@ -1,13 +1,15 @@
 package com.example.pertemuan12database.repository
 
 import com.example.pertemuan12database.model.Mahasiswa
+import com.example.pertemuan12database.model.MahasiswaResponse
+import com.example.pertemuan12database.model.MahasiswaResponseDetail
 import com.example.pertemuan12database.service_api.MahasiswaService
 import okio.IOException
 
 
-interface MahasiswaRepository{
+interface MahasiswaRepository {
 
-    suspend fun getMahasiswa(): List<Mahasiswa>
+    suspend fun getMahasiswa(): MahasiswaResponse
 
     suspend fun insertMahasiswa(mahasiswa: Mahasiswa)
 
@@ -15,18 +17,20 @@ interface MahasiswaRepository{
 
     suspend fun deleteMahasiswa(nim: String)
 
-    suspend fun getMahasiswaByNim(nim: String):Mahasiswa
+    suspend fun getMahasiswaByNim(nim: String): Mahasiswa
 }
 
 class NetworkMahasiswaRepository(
     private val mahasiswaApiService: MahasiswaService
-): MahasiswaRepository {
+) : MahasiswaRepository {
     override suspend fun insertMahasiswa(mahasiswa: Mahasiswa) {
         mahasiswaApiService.insertMahasiswa(mahasiswa)
     }
+
     override suspend fun updateMahasiswa(nim: String, mahasiswa: Mahasiswa) {
         mahasiswaApiService.updateMahasiswa(nim, mahasiswa)
     }
+
     override suspend fun deleteMahasiswa(nim: String) {
         try {
             val response = mahasiswaApiService.deleteMahasiswa(nim)
@@ -44,9 +48,17 @@ class NetworkMahasiswaRepository(
         }
     }
 
-    override suspend fun getMahasiswa(): List<Mahasiswa> = mahasiswaApiService.getMahasiswa()
+//    override suspend fun getMahasiswa(): List<Mahasiswa> = mahasiswaApiService.getMahasiswa()
+//
+//    override suspend fun getMahasiswaByNim(nim: String) : Mahasiswa {
+//        return mahasiswaApiService.getMahasiswaByNim(nim)
 
-    override suspend fun getMahasiswaByNim(nim: String) : Mahasiswa {
-        return mahasiswaApiService.getMahasiswaByNim(nim)
+    override suspend fun getMahasiswa(): MahasiswaResponse {
+        return mahasiswaApiService.getMahasiswa()
     }
+
+    override suspend fun getMahasiswaByNim(nim: String): Mahasiswa {
+        return mahasiswaApiService.getMahasiswaByNim(nim).data
+    }
+
 }
